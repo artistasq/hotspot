@@ -1,0 +1,101 @@
+﻿# This file contains error messages which are shown to user, when http/https
+# login is used.
+# These messages can be changed to make user interface more friendly, including
+# translations to different languages.
+#
+# Various variables can be used here as well. Most frequently used ones are:
+#	$(error-orig)	- original error message from hotspot
+#	$(ip)		- ip address of a client
+#	$(username)	- username of client trying to log in
+
+# internal-error
+# It should never happen. If it will, error page will be shown
+# displaying this error message (error-orig will describe what has happened)
+
+internal-error = حدث خطأ داخلي في النظام يا صديقي ($(error-orig))
+
+# config-error
+# Should never happen if hotspot is configured properly.
+
+config-error =هام: يرجى الاتصال بالمركز
+# not-logged-in
+# Will happen, if status or logout page is requested by user,
+# which actually is not logged in
+
+not-logged-in = لم تقم بتسجيل دخولك يا صديقي (ip $(ip))
+
+# ippool-empty
+# IP address for user is to be assigned from ip pool, but there are no more
+# addresses in that pool
+
+ippool-empty = لا يوجد مكان خالي على الشبكة حالياً، فضلاً عاود المحاولة في وقت لاحق يا صديقي
+
+# shutting-down
+# When shutdown is executed, new clients are not accepted
+
+shutting-down = لا يمكن تسجيل الدخول الآن، حاول بعد قليل يا صديقي
+
+# user-session-limit
+# If user profile has limit of shared-users, then this error will be shown
+# after reaching this limit
+
+user-session-limit = احد الاشخاص يستخدم هذا الكرت الآن
+
+# license-session-limit
+# Depending on licence number of active hotspot clients is limited to
+# one or another amount. If this limit is reached, following error is displayed.
+
+license-session-limit = يرجى دفع الاشتراك ابو الشباب..ما يسير هيك ها ($(error-orig))
+
+# wrong-mac-username
+# If username looks like MAC address (12:34:56:78:9a:bc), but is not
+# a MAC address of this client, login is rejected
+
+wrong-mac-username = فقط اول جهاز قام بتسجيل الدخول يحق له الدخول مرة اخرى (الكرت مربوط بلجهاز)
+
+# chap-missing
+# If http-chap login method is used, but hotspot program does not receive
+# back encrypted password, this error message is shown.
+# Possible reasons of failure:
+#	- JavaScript is not enabled in web browser;
+#	- login.html page is not valid;
+#	- challenge value has expired on server (more than 1h of inactivity);
+#	- http-chap login method is recently removed;
+# If JavaScript is enabled and login.html page is valid,
+# then retrying to login usually fixes this problem.
+
+chap-missing =لا تضغط كثيراً على زر الدخول يكفي مرة واحدة عزيزي
+# invalid-username
+# Most general case of invalid username or password. If RADIUS server
+# has sent an error string with Access-Reject message, then it will
+# override this setting.
+
+invalid-username =رمز خاطئ
+# invalid-mac
+# Local users (on hotspot server) can be bound to some MAC address. If login
+# from different MAC is tried, this error message will be shown.
+
+invalid-mac = فقط اول جهاز قام بتسجيل الدخول يحق له الدخول مرة اخرى (الكرت مربوط بلجهاز)
+
+# uptime-limit, traffic-limit
+# For local hotspot users in case if limits are reached
+
+uptime-limit =إنتهت أيام الصلاحية
+traffic-limit =انتهت الميغات المخصصة لهذه البطاقة
+
+# radius-timeout
+# User is authenticated by RADIUS server, but no response is received from it,
+# following error will be shown.
+
+radius-timeout = خطأ في سيرفر الـ speed يا صديقي
+
+# auth-in-progress
+# Authorization in progress. Client already has issued an authorization request
+# which is not yet complete.
+
+auth-in-progress =يرجى المحاولة مرة أخرة.. ادخل كرتك و انقر زر الدخول
+
+# radius-reply
+# Radius server returned some custom error message
+
+radius-reply = $(error-orig)
